@@ -216,7 +216,3 @@ We welcome contributions! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Authors
-
-- **Your Name** - *Initial work* - [Basith-Ahmed](https://github.com/basith-ahmed)
