@@ -82,7 +82,7 @@ venv.bak/
 .mypy_cache/
 
 #Configuration files
-config/user_config.yaml
+config/
 
 #Sessions
 sessions/
