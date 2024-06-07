@@ -9,14 +9,17 @@ class APIClient:
 
     def generate_code(self, prompt):
         try:
-            self.logger.log("Sending prompt to OpenAI API")
-            response = openai.Completion.create(
-                engine="text-davinci-003",
-                prompt=prompt,
-                max_tokens=150
-            )
-            self.logger.log("Received response from OpenAI API")
-            return response.choices[0].text.strip()
+            # message = openai.chat.completions.create(
+            #     messages=[
+            #         {
+            #             "role": "user",
+            #             "content": "Say this is a test",
+            #         }
+            #     ],
+            #     model="gpt-3.5-turbo",
+            # )
+            # return message.choices[0].text.strip()
+            return "Hey this is your response"
         except Exception as e:
-            self.logger.log(f"Error in API Client: {e}")
-            raise
+            print(f"An error occurred: {e}")
+            return None
