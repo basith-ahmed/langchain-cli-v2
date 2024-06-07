@@ -84,6 +84,9 @@ venv.bak/
 #Configuration files
 config/user_config.yaml
 
+#Sessions
+sessions/
+
 #IDE specific files
 #JetBrains specific files
 .idea/
