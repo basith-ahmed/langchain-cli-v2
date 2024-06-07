@@ -1,4 +1,4 @@
-# LangChain CLI - python
+# LangChain CLI - PyPI
 
 ## Overview
 The **LangChain CLI** is a powerful command-line tool that leverages the OpenAI API to generate code snippets based on user prompts. It is designed to assist developers by providing code suggestions and templates, making the coding process more efficient. The CLI also offers functionalities to save and load sessions, manage configurations, and handle generated code effectively.

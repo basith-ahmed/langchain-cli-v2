@@ -8,7 +8,7 @@ from src.error_handler import ErrorHandler
 
 def main():
     parser = argparse.ArgumentParser(description="CLI-based Coding Co-Pilot")
-    parser.add_argument("command", choices=["generate-code", "save-session", "load-session", "configure"], help="Command to execute")
+    parser.add_argument("command", choices=["generate", "save", "load", "configure"], help="Command to execute")
     parser.add_argument("prompt", type=str, nargs="?", help="The prompt to generate code for")
     parser.add_argument("--session-name", type=str, help="Name of the session to save/load")
     parser.add_argument("--file-name", type=str, help="File name to save generated code")
@@ -22,18 +22,23 @@ def main():
     error_handler = ErrorHandler(logger)
 
     try:
-        if args.command == "generate-code" and args.prompt:
+        if args.command == "generate" and args.prompt:
             generated_code = api_client.generate_code(args.prompt)
-            print("Generated Code:\n", generated_code)
+            print("\nGenerated Code:\n\n", generated_code)
             if args.file_name:
                 code_storage.save_code(args.file_name, generated_code)
-        elif args.command == "save-session" and args.session_name and args.prompt:
+            else:
+                save_it = input("\nDo you want to save this code? (y/n): ")
+                if save_it.lower() == "y":
+                    fileName = input("Enter a file name to save the code: ")
+                    code_storage.save_code(fileName, generated_code)
+        elif args.command == "save" and args.session_name and args.prompt:
             generated_code = api_client.generate_code(args.prompt)
             session_manager.save_session(args.session_name, args.prompt, generated_code)
             print("Session saved successfully.")
-        elif args.command == "load-session" and args.session_name:
+        elif args.command == "load" and args.session_name:
             session = session_manager.load_session(args.session_name)
-            print("Loaded Session:\n", session)
+            print("\nLoaded Session:\n\n", session)
         elif args.command == "configure":
             config_manager.configure()
         else:
