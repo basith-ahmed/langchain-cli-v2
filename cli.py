@@ -27,8 +27,10 @@ def main():
             print("Generated Code:\n", generated_code)
             if args.file_name:
                 code_storage.save_code(args.file_name, generated_code)
-        elif args.command == "save-session" and args.session_name:
+        elif args.command == "save-session" and args.session_name and args.prompt:
+            generated_code = api_client.generate_code(args.prompt)
             session_manager.save_session(args.session_name, args.prompt, generated_code)
+            print("Session saved successfully.")
         elif args.command == "load-session" and args.session_name:
             session = session_manager.load_session(args.session_name)
             print("Loaded Session:\n", session)
