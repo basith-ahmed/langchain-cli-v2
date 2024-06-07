@@ -1,7 +1,7 @@
 import unittest
 import os
-from code_storage import CodeStorage
-from logger import Logger
+from src.code_storage import CodeStorage
+from src.logger import Logger
 
 class TestCodeStorage(unittest.TestCase):
     def setUp(self):

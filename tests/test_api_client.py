@@ -1,6 +1,6 @@
 import unittest
-from api_client import APIClient
-from logger import Logger
+from src.api_client import APIClient
+from src.logger import Logger
 
 class TestAPIClient(unittest.TestCase):
     def setUp(self):

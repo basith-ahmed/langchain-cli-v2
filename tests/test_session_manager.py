@@ -1,7 +1,7 @@
 import unittest
 import os
-from session_manager import SessionManager
-from logger import Logger
+from src.session_manager import SessionManager
+from src.logger import Logger
 
 class TestSessionManager(unittest.TestCase):
     def setUp(self):

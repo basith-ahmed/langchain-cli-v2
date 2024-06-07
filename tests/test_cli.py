@@ -1,5 +1,5 @@
 import unittest
-from cli import main
+from src.cli import main
 
 class TestCLI(unittest.TestCase):
     def test_cli_generate_code(self):

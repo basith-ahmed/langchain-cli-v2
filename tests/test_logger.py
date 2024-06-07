@@ -1,6 +1,6 @@
 import unittest
 import logging
-from logger import Logger
+from src.logger import Logger
 
 class TestLogger(unittest.TestCase):
     def setUp(self):

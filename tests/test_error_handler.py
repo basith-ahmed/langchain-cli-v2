@@ -1,6 +1,6 @@
 import unittest
-from error_handler import ErrorHandler
-from logger import Logger
+from src.error_handler import ErrorHandler
+from src.logger import Logger
 
 class TestErrorHandler(unittest.TestCase):
     def setUp(self):

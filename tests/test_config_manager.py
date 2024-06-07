@@ -1,6 +1,6 @@
 import unittest
 import yaml
-from config_manager import ConfigManager
+from src.config_manager import ConfigManager
 
 class TestConfigManager(unittest.TestCase):
     def setUp(self):
