@@ -1,6 +1,5 @@
-openai
+openai>=1.0.0
 pyyaml
 argparse
 click
 pytest
-unittest
