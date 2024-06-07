@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='LangChainCLI',
-    version='0.1.0',
+    version='0.1.5',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
@@ -14,7 +14,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'langchain-cli-v2=cli:main',
+            'lc=src.cli:main',
         ],
     },
     author='Basith Ahmed',

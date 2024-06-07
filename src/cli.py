@@ -1,10 +1,10 @@
 import argparse
-from api_client import APIClient
-from session_manager import SessionManager
-from code_storage import CodeStorage
-from config_manager import ConfigManager
-from logger import Logger
-from error_handler import ErrorHandler
+from src.api_client import APIClient
+from src.session_manager import SessionManager
+from src.code_storage import CodeStorage
+from src.config_manager import ConfigManager
+from src.logger import Logger
+from src.error_handler import ErrorHandler
 
 def main():
     parser = argparse.ArgumentParser(description="CLI-based Coding Co-Pilot")
