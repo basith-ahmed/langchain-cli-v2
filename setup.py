@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='LangChainCLI',
-    version='0.1.5',
+    name='CodePy',
+    version='0.2.0',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
@@ -14,7 +14,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'lc=src.cli:main',
+            'cp=src.cli:main',
         ],
     },
     author='Basith Ahmed',
