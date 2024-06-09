@@ -1,4 +1,4 @@
-from src.logger import Logger
+from logger import Logger
 
 class ErrorHandler:
     def __init__(self, logger: Logger):

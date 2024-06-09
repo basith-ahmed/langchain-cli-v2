@@ -1,5 +1,5 @@
 import json
-from src.logger import Logger
+from logger import Logger
 import os
 
 class SessionManager:
@@ -17,7 +17,7 @@ class SessionManager:
         try:
             with open(f"sessions/{session_name}.json", "w") as f:
                 json.dump(session_data, f, indent=4)
-            self.logger.log(f"Session '{session_name}' saved.")
+            self.logger.log(f"> Session '{session_name}' saved.")
         except Exception as e:
             self.logger.log(f"Error saving session '{session_name}': {str(e)}")
             raise
@@ -28,18 +28,18 @@ class SessionManager:
         
         generated_code = session_data.get('generated_code', '')
         
-        self.logger.log(f"Session {session_name} loaded")
+        self.logger.log(f"> Session {session_name} loaded")
         return generated_code
 
     def display_saved_sessions(self):
         sessions_folder = "sessions"
         if not os.path.exists(sessions_folder):
-            print("No sessions found.")
+            print("> No sessions found.")
             return
         
         sessions = os.listdir(sessions_folder)
         if not sessions:
-            print("No sessions found.")
+            print("> No sessions found.")
             return
         
         print("\nSaved Sessions:\n")
@@ -50,7 +50,7 @@ class SessionManager:
         session_file = f"sessions/{session_name}.json"
         if os.path.exists(session_file):
             os.remove(session_file)
-            print(f"\nSession '{session_name}' deleted.")
+            print(f"\n> Session '{session_name}' deleted.")
         else:
-            print(f"\nSession '{session_name}' not found.")
+            print(f"\n> Session '{session_name}' not found.")
 

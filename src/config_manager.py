@@ -20,7 +20,8 @@ class ConfigManager:
         }
         with open(self.config_file, "w") as f:
             yaml.safe_dump(default_config, f)
-        print(f"Created default config file at {self.config_file}. Please configure it with your API key.")
+        print(f"\nCreated default config file at {self.config_file}.\nConfigure it with your OpenAI API key.")
+        print("\nYou can get your API key from https://platform.openai.com/account/api-keys")
 
     def configure(self):
         api_key = input("\nEnter your OpenAI API key: ")
