@@ -17,20 +17,20 @@ The **OpenWiz CLI** is a powerful command-line tool that utilizes the OpenAI API
 
 ### Developer Setup
 
-1. **Clone the Repository**: Obtain the source code by cloning the project repository from GitHub.
+1. **Clone the Repository**:
     ```bash
     git clone https://github.com/basith-ahmed/openwiz.git
     cd openwiz
     ```
 
-2. **Virtual Environment Setup**: Create a virtual environment to isolate dependencies and install necessary packages.
+2. **Virtual Environment Setup**:
     ```bash
     python -m venv venv
     .\venv\Scripts\activate
     pip install -r requirements.txt
     ```
 
-3. **API Key Configuration**: Configure your OpenAI API key to enable interaction with the OpenWiz CLI.
+3. **API Key Configuration**:
     ```bash
     python src\cli.py configure
     ```
@@ -38,7 +38,6 @@ The **OpenWiz CLI** is a powerful command-line tool that utilizes the OpenAI API
 ## Usage Instructions
 
 ### 1. Configuration
-Before utilizing the package functionalities, it's imperative to configure it with your OpenAI API key.
 ```bash
 python src\cli.py configure
 ```
@@ -47,7 +46,6 @@ python src\cli.py configure
 Enter your OpenAI API key: <your_api_key>
 ```
 ### 2. Code Generation
-Generate code snippets based on textual prompts using the OpenAI API.
 ```bash
 python src\cli.py generate "Create a Python function to add two numbers"
 ```
@@ -57,10 +55,8 @@ Generated Code:
 def add(a, b):
     return a + b
 ```
-**Explanation:** This command generates a Python function to add two numbers based on the provided prompt.
 
 ### 3. Saving Generated Code
-Save the generated code to a specified file for future reference.
 ```bash
 python src\cli.py generate "Create a Python function to subtract two numbers" --file-name subtract.py
 ```
@@ -72,7 +68,6 @@ def subtract(a, b):
 
 > Code saved to subtract.py
 ```
-**Explanation:** This command generates a Python function to subtract two numbers and saves it to a file named `subtract.py`.
 
 ### 4. Session Management
 Save the current session with a specific name for later retrieval.
@@ -111,7 +106,7 @@ Install the package from PyPI to integrate with existing projects.
 pip install openwiz
 ```
 ### Configuration and Usage
-Configure the OpenAI API key and utilize the CLI functionalities seamlessly as demonstrated in the previous section.
+Configure the OpenAI API key and utilize the CLI functionalities as demonstrated in the previous section.
 
 #### 1. Configuration
 ```bash
@@ -161,6 +156,10 @@ Contribute to the project by following these steps:
 5. Push the changes to the branch (`git push origin feature-branch`).
 6. Create a new Pull Request for review and integration.
 
-## Contributing and Licensing
+## Contributing
 
-Contributions to the project are welcome! Refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file for detailed guidelines. This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for further information.
+We welcome contributions! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for more details.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
