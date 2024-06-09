@@ -1,53 +1,60 @@
 # OpenWiz CLI - PyPI
 
-## Overview
-The **OpenWiz CLI** is a powerful command-line tool that utilizes the OpenAI API to generate code snippets based on user prompts. It is designed to assist developers by providing code suggestions and templates directly into their development environment, thereby enhancing coding efficiency. The CLI also offers functionalities to save and load sessions, manage configurations, and handle generated code effectively.
+## Introduction
 
-## Features
-- **Generate Code**: Create code snippets based on textual prompts using the OpenAI API.
-- **Save Generated Code**: Directly save generated code to specified files.
-- **Save and Load Sessions**: Save the current state of your prompts and generated code for later use and seamlessly continue working with previously saved sessions.
-- **Configuration Management**: Easily configure your OpenAI API key and other settings.
+The **OpenWiz CLI** stands as a robust command-line utility engineered to leverage the OpenAI API's capabilities in generating code snippets based on user inputs. Its primary objective is to empower developers by furnishing code suggestions and templates directly within their development environment, thereby amplifying coding productivity. This CLI additionally encompasses features for managing configurations, saving and loading sessions, and efficiently handling the generated code.
 
-## Installation
+## Key Features
+
+### 1. Code Generation
+The CLI facilitates the creation of code snippets tailored to specific requirements through interactions with the OpenAI API.
+
+### 2. Code Persistence
+Developers can seamlessly save the generated code directly to specified files, streamlining the workflow and enabling easy access to previously generated code.
+
+### 3. Session Management
+The tool allows for saving and loading sessions, enabling developers to preserve the current state of prompts and generated code for future reference and continuation.
+
+### 4. Configuration Handling
+Effortlessly configure the OpenAI API key and other settings to ensure smooth integration and operation of the CLI.
+
+## Installation Guide
 
 ### Prerequisites
-- Python 3.7 or higher
+- Python 3.7 or later
 - OpenAI API key
 
-### Steps for Developers
+### Developer Setup
 
-1. Clone the repository:
+1. **Clone the Repository**: Obtain the source code by cloning the project repository from GitHub.
     ```bash
     git clone https://github.com/basith-ahmed/openwiz.git
     cd openwiz
     ```
 
-2. Set up a virtual environment and install dependencies:
+2. **Virtual Environment Setup**: Create a virtual environment to isolate dependencies and install necessary packages.
     ```bash
     python -m venv venv
     .\venv\Scripts\activate
     pip install -r requirements.txt
     ```
 
-3. Configure your OpenAI API key:
+3. **API Key Configuration**: Configure your OpenAI API key to enable interaction with the OpenWiz CLI.
     ```bash
     python src\cli.py configure
     ```
 
-## Usage
+## Usage Instructions
 
-1. **Configure API Key**:
-Before using the package, you need to configure it with your openai api key.
+### 1. Configuration
+Before utilizing the package functionalities, it's imperative to configure it with your OpenAI API key.
 ```bash
 python src\cli.py configure
 ```
-**Output:**
-```
-Enter your OpenAI API key: <your_api_key>
-```
+**Explanation:** This command prompts the user to input their OpenAI API key for authentication.
 
-2. **Generate Code**
+### 2. Code Generation
+Generate code snippets based on textual prompts using the OpenAI API.
 ```bash
 python src\cli.py generate "Create a Python function to add two numbers"
 ```
@@ -57,12 +64,13 @@ Generated Code:
 def add(a, b):
     return a + b
 ```
+**Explanation:** This command generates a Python function to add two numbers based on the provided prompt.
 
-**Save Generated Code to a File**
+### 3. Saving Generated Code
+Save the generated code to a specified file for future reference.
 ```bash
 python src\cli.py generate "Create a Python function to subtract two numbers" --file-name subtract.py
 ```
-
 **Sample Output:**
 ```
 Generated Code:
@@ -71,14 +79,13 @@ def subtract(a, b):
 
 > Code saved to subtract.py
 ```
+**Explanation:** This command generates a Python function to subtract two numbers and saves it to a file named `subtract.py`.
 
-**Save Session**
-Save the current session with a specific name.
-
+### 4. Session Management
+Save the current session with a specific name for later retrieval.
 ```bash
 python src\cli.py save --session-name my_session --prompt "Create a Python function to add two numbers"
 ```
-
 **Sample Output:**
 ```
 Generated Code:
@@ -87,14 +94,13 @@ def add(a, b):
 
 > Session my_session saved
 ```
+**Explanation:** This command saves the current session with the provided prompt under the name `my_session`.
 
-**Load Session**
-Load a previously saved session.
-
+### 5. Loading Sessions
+Load a previously saved session to resume work from a specific state.
 ```bash
 python src\cli.py load --session-name my_session
 ```
-
 **Sample Output:**
 ```
 Loaded Session:
@@ -103,47 +109,17 @@ Loaded Session:
     "generated_code": "def add(a, b):\n    return a + b"
 }
 ```
+**Explanation:** This command loads the session named `my_session`, allowing access to the associated prompt and generated code.
+```
 
-## Usage with PyPI Package
-**Install Package**
+### Installation
+Install the package from PyPI to streamline integration with existing projects.
 ```bash
 pip install openwiz
 ```
 
-**Configure API Key**
-Configure the OpenAI API key.
-
-```bash
-owc configure
-```
-
-**Generate Code**
-Generate code based on a prompt.
-
-```bash
-owc generate "Create a Python function to add two numbers"
-```
-
-**Save Generated Code to a File**
-Generate code and save it to a file.
-
-```bash
-owc generate "Create a Python function to subtract two numbers" --file-name subtract.py
-```
-
-**Save Session**
-Save the current session with a session name.
-
-```bash
-owc save --session-name my_session --prompt "Create a Python function to add two numbers"
-```
-
-**Load Session**
-Load a previously saved session.
-
-```bash
-owc load --session-name my_session
-```
+### Configuration and Usage
+Configure the OpenAI API key and utilize the CLI functionalities seamlessly as demonstrated in the previous section.
 
 ## Command Reference
 
@@ -154,41 +130,24 @@ owc load --session-name my_session
 | `load`    | Load a previously saved session.                         | `--f`: Load and view all the saved sessions.<br>`--d`: Delete a specific session.<br>`--session-name`: Load a specific session from the saved sessions.|
 | `configure` | Configure the OpenAI API key.                           |                                                                      |
 
+## Development Guidelines
 
-## Development
-
-**Running Tests*
-To run the unit tests:
-
+### Running Tests
+Ensure code integrity by running unit tests.
 ```bash
 pytest tests/
 ```
-**Output:**
-```
-============================= test session starts =============================
-collected 8 items
+**Explanation:** This command executes the unit tests located in the `tests` directory to validate the functionality of the codebase.
 
-tests/test_api_client.py ....                                              [ 50%]
-tests/test_code_storage.py .                                               [ 62%]
-tests/test_config_manager.py .                                             [ 75%]
-tests/test_error_handler.py .                                              [ 87%]
-tests/test_logger.py .                                                     [100%]
-
-============================= 8 passed in 0.45s ==============================
-```
-
-### Adding New Features or Fixes
+### Contribution Workflow
+Contribute to the project by following these steps:
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes and add tests for them.
-4. Commit your changes (`git commit -am 'Add new feature'`).
-5. Push to the branch (`git push origin feature-branch`).
-6. Create a new Pull Request.
+3. Implement changes and add corresponding tests.
+4. Commit the changes (`git commit -am 'Add new feature'`).
+5. Push the changes to the branch (`git push origin feature-branch`).
+6. Create a new Pull Request for review and integration.
 
-## Contributing
+## Contributing and Licensing
 
-We welcome contributions! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for more details.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+Contributions to the project are welcome! Refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file for detailed guidelines. This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for further information.
