@@ -1,5 +1,5 @@
 import json
-from logger import Logger
+from src.logger import Logger
 import os
 
 class SessionManager:

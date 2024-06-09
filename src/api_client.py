@@ -9,35 +9,34 @@ class APIClient:
 
     def generate_code(self, prompt):
         try:
-            message = openai.chat.completions.create(
-                messages=[
-                    {
-                        "role": "user",
-                        "content": "Generate code for the following prompt and only return the code:\n\n" + prompt,
-                    }
-                ],
-                model="gpt-3.5-turbo",
-            )
-            # return message.choices[0].text.strip()
-            # message = {
-            #     "id": "cmpl-5hR1xyzxyzxyz",
-            #     "object": "text_completion",
-            #     "created": 1616620981,
-            #     "model": "text-davinci-003",
-            #     "choices": [
+            # message = openai.chat.completions.create(
+            #     messages=[
             #         {
-            #         "text": "def fibonacci(n):\n    if n <= 0:\n        return 0\n    elif n == 1:\n        return 1\n    else:\n        return fibonacci(n-1) + fibonacci(n-2)\n\nprint('Fibonacci sequence:')\nfor i in range(10):\n    print(fibonacci(i))",
-            #         "index": 0,
-            #         "finish_reason": "stop"
+            #             "role": "user",
+            #             "content": "Generate code for the following prompt and only return the code:\n\n" + prompt,
             #         }
             #     ],
-            #     "usage": {
-            #         "prompt_tokens": 5,
-            #         "completion_tokens": 7,
-            #         "total_tokens": 12
-            #     }
-            # }
+            #     model="gpt-3.5-turbo",
+            # )
+            message = {
+                "id": "cmpl-5hR1xyzxyzxyz",
+                "object": "text_completion",
+                "created": 1616620981,
+                "model": "text-davinci-003",
+                "choices": [
+                    {
+                        "text": 'import requests\nfrom bs4 import BeautifulSoup\n\ndef get_stock_info(stock_symbol):\n\turl = f"https://www.google.com/finance/quote/{stock_symbol}"\n\tresponse = requests.get(url)\n\tif response.status_code == 200:\n\t\tsoup = BeautifulSoup(response.content, \'html.parser\')\n\t\tprice = soup.find(class_="YMlKec fxKbKc").get_text()\n\t\tchange = soup.find(class_="YMlKec fxKbKc").next_sibling.get_text()\n\t\treturn f"Price: {price}, Change: {change}"\n\telse:\n\t\treturn "Failed to fetch data"\n\n# Example usage\nprint(get_stock_info("AAPL"))',
+                        "index": 0,
+                        "finish_reason": "stop"
+                    }
+                ],
+                "usage": {
+                    "prompt_tokens": 5,
+                    "completion_tokens": 7,
+                    "total_tokens": 12
+                }
+            }
             return message['choices'][0]['text']
         except Exception as e:
-            print(f"An error occurred: {e}")
+            print(f"\nERROR MESSAGE: {e}")
             return None
