@@ -38,24 +38,34 @@ The **OpenWiz CLI** is a powerful command-line tool that utilizes the OpenAI API
 ## Usage
 
 ### Configure API Key
-Configure the OpenAI API key.
-
 ```bash
 python src\cli.py configure
 ```
 
 ### Generate Code
-Generate code based on a prompt.
-
 ```bash
 python src\cli.py generate "Create a Python function to add two numbers"
 ```
 
-### Save Generated Code to a File
-Generate code and save it to a file.
+**Sample Output:**
+```
+Generated Code:
+def add(a, b):
+    return a + b
+```
 
+### Save Generated Code to a File
 ```bash
 python src\cli.py generate "Create a Python function to subtract two numbers" --file-name subtract.py
+```
+
+**Sample Output:**
+```
+Generated Code:
+def subtract(a, b):
+    return a - b
+
+> Code saved to subtract.py
 ```
 
 ### Save Session
@@ -65,11 +75,29 @@ Save the current session with a specific name.
 python src\cli.py save --session-name my_session --prompt "Create a Python function to add two numbers"
 ```
 
+**Sample Output:**
+```
+Generated Code:
+def add(a, b):
+    return a + b
+
+> Session my_session saved
+```
+
 ### Load Session
 Load a previously saved session.
 
 ```bash
 python src\cli.py load --session-name my_session
+```
+
+**Sample Output:**
+```
+Loaded Session:
+{
+    "prompt": "Create a Python function to add two numbers",
+    "generated_code": "def add(a, b):\n    return a + b"
+}
 ```
 
 ## Usage with PyPI Package
@@ -101,7 +129,7 @@ owc generate "Create a Python function to subtract two numbers" --file-name subt
 ```
 
 ### Save Session
-Save the current session with a specific name.
+Save the current session with a session name.
 
 ```bash
 owc save --session-name my_session --prompt "Create a Python function to add two numbers"
@@ -116,26 +144,13 @@ owc load --session-name my_session
 
 ## Command Reference
 
-### `generate`
-Generate code based on a prompt.
+| Command   | Description                                              | Options                                                              |
+|-----------|----------------------------------------------------------|----------------------------------------------------------------------|
+| `generate`| Generate code based on a prompt.                         | `--file-name`: Save the generated code to a specified file.         |
+| `save`    | Save the current session with a specified name.          | `--session-name`: Save the generated code as a session to view later.|
+| `load`    | Load a previously saved session.                         | `--f`: Load and view all the saved sessions.<br>`--d`: Delete a specific session.<br>`--session-name`: Load a specific session from the saved sessions.|
+| `configure` | Configure the OpenAI API key.                           |                                                                      |
 
-**Options**:
-- `--file-name`: Save the generated code to a specified file.
-
-### `save`
-Save the current session with a specified name.
-**Options**:
-- `--session-name`: Save the generated code as a session to view later.
-
-### `load`
-Load a previously saved session.
-**Options**:
-- `--f`: Load and view all the saved sessions.
-- `--d`: Delete a specific session.
-- `--session-name`: Load the a specific session from the saved sessions.
-
-### `configure`
-Configure the OpenAI API key.
 
 ## Development
 
@@ -144,6 +159,19 @@ To run the unit tests:
 
 ```bash
 pytest tests/
+```
+**Output:**
+```
+============================= test session starts =============================
+collected 8 items
+
+tests/test_api_client.py ....                                              [ 50%]
+tests/test_code_storage.py .                                               [ 62%]
+tests/test_config_manager.py .                                             [ 75%]
+tests/test_error_handler.py .                                              [ 87%]
+tests/test_logger.py .                                                     [100%]
+
+============================= 8 passed in 0.45s ==============================
 ```
 
 ### Adding New Features or Fixes
