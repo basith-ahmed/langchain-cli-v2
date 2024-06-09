@@ -1,10 +1,11 @@
 import argparse
-from src.api_client import APIClient
-from src.session_manager import SessionManager
-from src.code_storage import CodeStorage
-from src.config_manager import ConfigManager
-from src.logger import Logger
-from src.error_handler import ErrorHandler
+import os
+from api_client import APIClient
+from session_manager import SessionManager
+from code_storage import CodeStorage
+from config_manager import ConfigManager
+from logger import Logger
+from error_handler import ErrorHandler
 
 def main():
     parser = argparse.ArgumentParser(description="CLI-based Coding Co-Pilot")
@@ -24,31 +25,57 @@ def main():
     error_handler = ErrorHandler(logger)
 
     try:
-        if args.command == "generate" and args.prompt:
-            generated_code = api_client.generate_code(args.prompt)
-            print("\nGenerated Code:\n\n", generated_code)
-            if args.file_name:
-                code_storage.save_code(args.file_name, generated_code)
+        if args.command == "generate":
+            if args.prompt:
+                generated_code = api_client.generate_code(args.prompt)
+                if generated_code is None:
+                    print("\nFailed to generate code. Please try again.")
+                    return
+                print("\nGenerated Code:\n\n", generated_code)
+                if args.file_name:
+                    code_storage.save_code(args.file_name, generated_code)
+                else:
+                    save_it = input("\nDo you want to save this code? (Y/n): ")
+                    while save_it.lower() not in ["y", "n", ""]:
+                        print("\n> Invalid input.")
+                        save_it = input("\nDo you want to save this code? (Y/n): ")
+                    if save_it.lower() == "y":
+                        file_name = input("\nEnter a file name to save the code: ")
+                        code_storage.save_code(file_name, generated_code)
             else:
-                save_it = input("\nDo you want to save this code? (Y/n): ")
-                if save_it.lower() == "y":
-                    fileName = input("Enter a file name to save the code: ")
-                    code_storage.save_code(fileName, generated_code)
-        elif args.command == "save" and args.session_name and args.prompt:
-            generated_code = api_client.generate_code(args.prompt)
-            session_manager.save_session(args.session_name, args.prompt, generated_code)
-            print("\nSession saved successfully.")
-        elif args.command == "load" and args.session_name and args.d:
-            session_manager.delete_session(args.session_name)
-        elif args.command == "load" and args.session_name:
-            session = session_manager.load_session(args.session_name)
-            print("\nLoaded Session:\n\n", session)
-        elif args.command == "load" and args.f:
-            session_manager.display_saved_sessions()
+                print("\nPlease provide a prompt to generate code.")
+        
+        elif args.command == "save":
+            if args.session_name and args.prompt:
+                generated_code = api_client.generate_code(args.prompt)
+                if generated_code is None:
+                    print("\nFailed to generate code. Please try again.")
+                    return
+                print("\nGenerated Code:\n\n", generated_code)
+                session_manager.save_session(args.session_name, args.prompt, generated_code)
+            else:
+                print("\nPlease provide both session name and prompt.")
+        
+        elif args.command == "load":
+            if args.d:
+                if args.session_name:
+                    session_manager.delete_session(args.session_name)
+                else:
+                    print("\nPlease provide the session name to delete.")
+            elif args.f:
+                session_manager.display_saved_sessions()
+            elif args.session_name:
+                session = session_manager.load_session(args.session_name)
+                print("\nLoaded Session:\n\n", session)
+            else:
+                print("\nPlease provide a session name to load.")
+        
         elif args.command == "configure":
             config_manager.configure()
+        
         else:
             parser.print_help()
+
     except Exception as e:
         error_handler.handle(e)
 
