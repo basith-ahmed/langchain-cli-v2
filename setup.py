@@ -2,19 +2,18 @@ from setuptools import setup, find_packages
 
 setup(
     name='openwiz',
-    version='1.2.0',
+    version='1.2.5',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
         'openai',
         'pyyaml',
-        'argparse',
         'click',
         'pytest'
     ],
     entry_points={
         'console_scripts': [
-            'ow=src.cli:main',
+            'owc=src.cli:main',
         ],
     },
     author='Basith Ahmed',
