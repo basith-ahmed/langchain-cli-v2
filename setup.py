@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='CodePy',
+    name='openwiz',
     version='0.2.0',
     packages=find_packages(),
     include_package_data=True,
@@ -14,7 +14,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'cp=src.cli:main',
+            'ow=src.cli:main',
         ],
     },
     author='Basith Ahmed',
@@ -22,7 +22,7 @@ setup(
     description='A CLI tool for generating code using the OpenAI API',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/basith-ahmed/langchain-cli-v2',
+    url='https://github.com/basith-ahmed/openwiz',
     classifiers=[
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
