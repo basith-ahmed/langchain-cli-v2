@@ -42,6 +42,11 @@ The **OpenWiz CLI** is a powerful command-line tool that utilizes the OpenAI API
 python src\cli.py configure
 ```
 
+**Output:**
+```
+Enter your OpenAI API key: <your_api_key>
+```
+
 ### Generate Code
 ```bash
 python src\cli.py generate "Create a Python function to add two numbers"
