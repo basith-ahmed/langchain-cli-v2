@@ -1,22 +1,13 @@
 # OpenWiz CLI - PyPI
 
-## Introduction
+## Overview
+The **OpenWiz CLI** is a powerful command-line tool that utilizes the OpenAI API to generate code snippets based on user prompts. It is designed to assist developers by providing code suggestions and templates directly into their development environment, thereby enhancing coding efficiency. The CLI also offers functionalities to save and load sessions, manage configurations, and handle generated code effectively.
 
-The **OpenWiz CLI** stands as a robust command-line utility engineered to leverage the OpenAI API's capabilities in generating code snippets based on user inputs. Its primary objective is to empower developers by furnishing code suggestions and templates directly within their development environment, thereby amplifying coding productivity. This CLI additionally encompasses features for managing configurations, saving and loading sessions, and efficiently handling the generated code.
-
-## Key Features
-
-### 1. Code Generation
-The CLI facilitates the creation of code snippets tailored to specific requirements through interactions with the OpenAI API.
-
-### 2. Code Persistence
-Developers can seamlessly save the generated code directly to specified files, streamlining the workflow and enabling easy access to previously generated code.
-
-### 3. Session Management
-The tool allows for saving and loading sessions, enabling developers to preserve the current state of prompts and generated code for future reference and continuation.
-
-### 4. Configuration Handling
-Effortlessly configure the OpenAI API key and other settings to ensure smooth integration and operation of the CLI.
+## Features
+- **Generate Code**: Create code snippets based on textual prompts using the OpenAI API.
+- **Save Generated Code**: Directly save generated code to specified files.
+- **Save and Load Sessions**: Save the current state of your prompts and generated code for later use and seamlessly continue working with previously saved sessions.
+- **Configuration Management**: Easily configure your OpenAI API key and other settings.
 
 ## Installation Guide
 
@@ -112,10 +103,10 @@ Loaded Session:
 }
 ```
 **Explanation:** This command loads the session named `my_session`, allowing access to the associated prompt and generated code.
-```
 
 ### Installation
 Install the package from PyPI to integrate with existing projects.
+
 ```bash
 pip install openwiz
 ```
@@ -142,9 +133,6 @@ owc save --session-name my_session --prompt "Create a Python function to add two
 ```bash
 owc load --session-name my_session
 ```
-
-### Configuration and Usage
-Configure the OpenAI API key and utilize the CLI functionalities seamlessly as demonstrated in the previous section.
 
 ## Command Reference
 
