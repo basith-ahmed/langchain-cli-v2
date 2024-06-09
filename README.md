@@ -51,8 +51,10 @@ Before utilizing the package functionalities, it's imperative to configure it wi
 ```bash
 python src\cli.py configure
 ```
-**Explanation:** This command prompts the user to input their OpenAI API key for authentication.
-
+**Output:**
+```
+Enter your OpenAI API key: <your_api_key>
+```
 ### 2. Code Generation
 Generate code snippets based on textual prompts using the OpenAI API.
 ```bash
@@ -113,9 +115,32 @@ Loaded Session:
 ```
 
 ### Installation
-Install the package from PyPI to streamline integration with existing projects.
+Install the package from PyPI to integrate with existing projects.
 ```bash
 pip install openwiz
+```
+### Configuration and Usage
+Configure the OpenAI API key and utilize the CLI functionalities seamlessly as demonstrated in the previous section.
+
+#### 1. Configuration
+```bash
+owc configure
+```
+#### 2. Code Generation
+```bash
+owc generate "Create a Python function to add two numbers"
+```
+#### 3. Saving Generated Code
+```bash
+owc generate "Create a Python function to subtract two numbers" --file-name subtract.py
+```
+#### 4. Session Management
+```bash
+owc save --session-name my_session --prompt "Create a Python function to add two numbers"
+```
+#### 5. Loading Sessions
+```bash
+owc load --session-name my_session
 ```
 
 ### Configuration and Usage
