@@ -16,76 +16,98 @@ The **LangChain CLI** is a powerful command-line tool that leverages the OpenAI 
 - Python 3.7 or higher
 - OpenAI API key
 
-### Steps
+### Steps - For Developers
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/basith-ahmed/langchain-cli-v2.git
-    cd langchain-cli-v2
+    git clone https://github.com/basith-ahmed/openwiz.git
+    cd openwiz
     ```
-
-2. **Install the required packages**:
-    ```bash
+2. **Start a virtual environment**:
+    ```cmd
+    python -m venv venv
+    ```
+3. **Start a virtual environment**:
+    ```cmd
+    .\\venv\\Scripts\\activate
+    ```
+4. **Install the required packages**:
+    ```cmd
     pip install -r requirements.txt
     ```
-
-3. **Configure your OpenAI API key**:
-    ```bash
-    python cli.py configure
+5. **Configure your OpenAI API key**:
+    ```cmd
+    python src\\cli.py configure
     ```
 
-## Usage
+## Usage - Repo Clone
+
+### Configure API Key
+Configure the OpenAI API key.
+
+```cmd
+python src\\cli.py configure
+```
+
+**Output:**
+```
+Enter your OpenAI API key: <your_api_key>
+```
 
 ### Generate Code
 Generate code based on a prompt.
 
-```bash
-python cli.py generate-code "Create a Python function to add two numbers"
+```cmd
+python src\\cli.py generate "Create a Python function to add two numbers"
 ```
 
-**Output:**
+**Sample Output:**
 ```
 Generated Code:
 def add(a, b):
     return a + b
 ```
 
-### Save Generated Code to File
+### Save Generated Code to a File
 Generate code and save it to a file.
 
-```bash
-python cli.py generate-code "Create a Python function to subtract two numbers" --file-name subtract.py
+```cmd
+python src\\cli.py generate "Create a Python function to subtract two numbers" --file-name subtract.py
 ```
 
-**Output:**
+**Sample Output:**
 ```
 Generated Code:
 def subtract(a, b):
     return a - b
 
-Code saved to subtract.py
+> Code saved to subtract.py
 ```
 
 ### Save Session
 Save the current session with a specific name.
 
-```bash
-python cli.py save-session --session-name my_session --prompt "Create a Python function to add two numbers"
+```cmd
+python src\\cli.py save --session-name my_session --prompt "Create a Python function to add two numbers"
 ```
 
-**Output:**
+**Sample Output:**
 ```
-Session my_session saved
+Generated Code:
+def add(a, b):
+    return a + b
+
+> Session my_session saved
 ```
 
 ### Load Session
 Load a previously saved session.
 
-```bash
-python cli.py load-session --session-name my_session
+```cmd
+python src\\cli.py load --session-name my_session
 ```
 
-**Output:**
+**Sample Output:**
 ```
 Loaded Session:
 {
@@ -94,11 +116,18 @@ Loaded Session:
 }
 ```
 
+
+## Usage - PyPI Package
+### Install Package
+```cmd
+pip install openwiz
+```
+
 ### Configure API Key
 Configure the OpenAI API key.
 
-```bash
-python cli.py configure
+```cmd
+owc configure
 ```
 
 **Output:**
@@ -106,84 +135,98 @@ python cli.py configure
 Enter your OpenAI API key: <your_api_key>
 ```
 
-## Command Reference
-
-### `generate-code`
+### Generate Code
 Generate code based on a prompt.
 
-**Usage**:
-```bash
-python cli.py generate-code "Create a Python function to add two numbers"
+```cmd
+owc generate "Create a Python function to add two numbers"
 ```
+
+**Sample Output:**
+```
+Generated Code:
+def add(a, b):
+    return a + b
+```
+
+### Save Generated Code to a File
+Generate code and save it to a file.
+
+```cmd
+owc generate "Create a Python function to subtract two numbers" --file-name subtract.py
+```
+
+**Sample Output:**
+```
+Generated Code:
+def subtract(a, b):
+    return a - b
+
+> Code saved to subtract.py
+```
+
+### Save Session
+Save the current session with a specific name.
+
+```cmd
+owc save --session-name my_session --prompt "Create a Python function to add two numbers"
+```
+
+**Sample Output:**
+```
+Generated Code:
+def add(a, b):
+    return a + b
+
+> Session my_session saved
+```
+
+### Load Session
+Load a previously saved session.
+
+```cmd
+owc load --session-name my_session
+```
+
+**Sample Output:**
+```
+Loaded Session:
+{
+    "prompt": "Create a Python function to add two numbers",
+    "generated_code": "def add(a, b):\n    return a + b"
+}
+```
+
+
+## Command Reference
+
+### `generate`
+Generate code based on a prompt.
+
 **Options**:
 - `--file-name`: Save the generated code to a specified file.
 
-### `save-session`
+### `save`
 Save the current session with a specified name.
+**Options**:
+- `--session-name`: Save the generated code as a session to view later.
 
-**Usage**:
-```bash
-python cli.py save-session --session-name my_session --prompt "Create a Python function to add two numbers"
-```
-
-### `load-session`
+### `load`
 Load a previously saved session.
-
-**Usage**:
-```bash
-python cli.py load-session --session-name my_session
-```
+**Options**:
+- `--f`: Load and view all the saved sessions.
+- `--d`: Delete a specific session.
+- `--session-name`: Load the a specific session from the saved sessions.
 
 ### `configure`
 Configure the OpenAI API key.
-
-**Usage**:
-```bash
-python cli.py configure
-```
-
-## Project Structure
-
-```
-langchain-cli-v2/
-├── cli.py
-├── api_client.py
-├── openai_api.py
-├── session_manager.py
-├── code_storage.py
-├── config_manager.py
-├── error_handler.py
-├── logger.py
-├── tests/
-│   ├── test_cli.py
-│   ├── test_api_client.py
-│   ├── test_openai_api.py
-│   ├── test_session_manager.py
-│   ├── test_code_storage.py
-│   ├── test_config_manager.py
-│   ├── test_error_handler.py
-│   └── test_logger.py
-├── config/
-│   ├── default_config.yaml
-│   └── user_config.yaml
-├── docs/
-│   ├── index.md
-│   ├── installation.md
-│   ├── usage.md
-│   ├── configuration.md
-│   └── api_reference.md
-├── sessions/
-│   └── my_session.json
-├── requirements.txt
-└── .gitignore
-```
 
 ## Development
 
 ### Running Tests
 To run the unit tests:
 
-```bash
+```cmd
 pytest tests/
 ```
 
