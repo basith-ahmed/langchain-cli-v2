@@ -17,41 +17,40 @@ The **OpenWiz CLI** is a powerful command-line tool that utilizes the OpenAI API
 
 ### Steps for Developers
 
-1. **Clone the repository**:
+1. Clone the repository:
     ```bash
     git clone https://github.com/basith-ahmed/openwiz.git
     cd openwiz
     ```
 
-2. **Set up a virtual environment and install dependencies**:
+2. Set up a virtual environment and install dependencies:
     ```bash
     python -m venv venv
     .\venv\Scripts\activate
     pip install -r requirements.txt
     ```
 
-3. **Configure your OpenAI API key**:
+3. Configure your OpenAI API key:
     ```bash
     python src\cli.py configure
     ```
 
 ## Usage
 
-### Configure API Key
+1. **Configure API Key**:
+Before using the package, you need to configure it with your openai api key.
 ```bash
 python src\cli.py configure
 ```
-
 **Output:**
 ```
 Enter your OpenAI API key: <your_api_key>
 ```
 
-### Generate Code
+2. **Generate Code**
 ```bash
 python src\cli.py generate "Create a Python function to add two numbers"
 ```
-
 **Sample Output:**
 ```
 Generated Code:
@@ -59,7 +58,7 @@ def add(a, b):
     return a + b
 ```
 
-### Save Generated Code to a File
+**Save Generated Code to a File**
 ```bash
 python src\cli.py generate "Create a Python function to subtract two numbers" --file-name subtract.py
 ```
@@ -73,7 +72,7 @@ def subtract(a, b):
 > Code saved to subtract.py
 ```
 
-### Save Session
+**Save Session**
 Save the current session with a specific name.
 
 ```bash
@@ -89,7 +88,7 @@ def add(a, b):
 > Session my_session saved
 ```
 
-### Load Session
+**Load Session**
 Load a previously saved session.
 
 ```bash
@@ -106,41 +105,40 @@ Loaded Session:
 ```
 
 ## Usage with PyPI Package
-
-### Install Package
+**Install Package**
 ```bash
 pip install openwiz
 ```
 
-### Configure API Key
+**Configure API Key**
 Configure the OpenAI API key.
 
 ```bash
 owc configure
 ```
 
-### Generate Code
+**Generate Code**
 Generate code based on a prompt.
 
 ```bash
 owc generate "Create a Python function to add two numbers"
 ```
 
-### Save Generated Code to a File
+**Save Generated Code to a File**
 Generate code and save it to a file.
 
 ```bash
 owc generate "Create a Python function to subtract two numbers" --file-name subtract.py
 ```
 
-### Save Session
+**Save Session**
 Save the current session with a session name.
 
 ```bash
 owc save --session-name my_session --prompt "Create a Python function to add two numbers"
 ```
 
-### Load Session
+**Load Session**
 Load a previously saved session.
 
 ```bash
@@ -159,7 +157,7 @@ owc load --session-name my_session
 
 ## Development
 
-### Running Tests
+**Running Tests*
 To run the unit tests:
 
 ```bash
