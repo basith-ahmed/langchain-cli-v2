@@ -1,4 +1,4 @@
-# OpenWiz CLI - PyPI
+# OpenWiz CLI
 
 ## Overview
 The **OpenWiz CLI** is a powerful command-line tool that utilizes the OpenAI API to generate code snippets based on user prompts. It is designed to assist developers by providing code suggestions and templates directly into their development environment, thereby enhancing coding efficiency. The CLI also offers functionalities to save and load sessions, manage configurations, and handle generated code effectively.
